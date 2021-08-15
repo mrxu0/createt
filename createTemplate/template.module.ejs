@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { <%= name.toUpperCase() %>Service } from './<%= name %>.service';
-import { <%= name.toUpperCase() %>Controller } from './<%= name %>.controller';
-import { <%= name.toUpperCase() %> } from './entities/<%= name %>.entity';
+import { <%= firstUpperCase(name) %>Service } from './<%= name %>.service';
+import { <%= firstUpperCase(name) %>Controller } from './<%= name %>.controller';
+import { <%= firstUpperCase(name) %> } from './entities/<%= name %>.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([<%= name.toUpperCase() %>])],
-  providers: [<%= name.toUpperCase() %>Service],
-  controllers: [<%= name.toUpperCase() %>Controller],
+  imports: [TypeOrmModule.forFeature([<%= firstUpperCase(name) %>])],
+  providers: [<%= firstUpperCase(name) %>Service],
+  controllers: [<%= firstUpperCase(name) %>Controller],
 })
 /** 钉钉相关的定时任务 */
-export class <%= name.toUpperCase() %>Module {}
+export class <%= firstUpperCase(name) %>Module {}

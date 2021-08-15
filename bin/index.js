@@ -65,6 +65,10 @@ async function inputCallback(config) {
                     log.error(`config.json 中的 ejs.name 是保留属性，会被替换为 name ，请使用其他属性`)
                 }
                 ejs.name = config.name;
+                if(ejs.firstUpperCase) {
+                    log.error(`config.json 中的 ejs.firstUpperCase 是保留属性，会被替换为 name ，请使用其他属性`)
+                }
+                ejs.firstUpperCase = (str) => str.replace(/.?/, (v) => v.toUpperCase())
                 createt = Object.assign(defaultCreatetConfig, createt)
                 log.sucess(`获取配置文件处理完成：${JSON.stringify(configJSON)}`)
             }

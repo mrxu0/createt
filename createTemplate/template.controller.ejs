@@ -3,13 +3,13 @@ import {
   Get as get,
   Query as query,
 } from '@nestjs/common';
-import { <%= name.toUpperCase() %>Service } from './<%= name %>.service';
+import { <%= firstUpperCase(name) %>Service } from './<%= name %>.service';
 
 @controller('<%= name %>')
 /** 匿名 controller */
-export class <%= name.toUpperCase() %>Controller {
+export class <%= firstUpperCase(name) %>Controller {
   /** 构造函数 */
-  constructor(private readonly <%= name %>Service: <%= name.toUpperCase() %>Service) {}
+  constructor(private readonly <%= name %>Service: <%= firstUpperCase(name) %>Service) {}
 
   /** 创建匿名 */
   @get('create')
