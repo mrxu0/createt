@@ -59,7 +59,12 @@ async function inputCallback(config) {
             if(!configJSON) {
                 configJSON = configJSON || { createt: defaultCreatetConfig }    
             } else{
-                let { createt, ... other} = configJSON
+                let { createt, ejs} = configJSON;
+                ejs = ejs || {};
+                if(ejs.name) {
+                    log.error(`config.json 中的 ejs.name 是保留属性，会被替换为 name ，请使用其他属性`)
+                }
+                ejs.name = config.name;
                 createt = Object.assign(defaultCreatetConfig, createt)
                 log.sucess(`获取配置文件处理完成：${JSON.stringify(configJSON)}`)
             }
@@ -81,11 +86,6 @@ async function inputCallback(config) {
                         log.sucess(`ejs 文件名替换:${item} => ${newItem}`)
                         if (hasConfigFile) {
                             let { createt, ejs } = configJSON;
-                            ejs = ejs || {};
-                            if(ejs.name) {
-                                log.error(`config.json 中的 ejs.name 是保留属性，会被替换为 name ，请使用其他属性`)
-                            }
-                            ejs.name = config.name;
                             log.sucess(`查看 ejs 的配置：${JSON.stringify(ejs)}`)
                             const newEjs = ejsRender.render(fs.readFileSync(filePath).toString(), ejs)
                             fs.writeFileSync(path.resolve(recursiveDir, newItem), newEjs);
