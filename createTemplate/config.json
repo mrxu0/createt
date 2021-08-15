@@ -1,0 +1,10 @@
+{
+    "createt": {
+        "path": "./src/",
+        "replace": "template",
+        "suffix": "ts"
+    },
+    "ejs": {
+
+    }
+}

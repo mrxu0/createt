@@ -1,0 +1,21 @@
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+
+@Entity()
+/** 定时任务表 */
+export class <%= name.toUpperCase() %> {
+  @PrimaryGeneratedColumn()
+  id: number;
+
+  /** 匿名吐槽内容 */
+  @Column({ length: 1000 })
+  content: string;
+
+  /** 时间 */
+  @CreateDateColumn({})
+  created_at: Date;
+}

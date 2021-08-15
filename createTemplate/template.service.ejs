@@ -1,0 +1,23 @@
+import { Injectable } from '@nestjs/common';
+import { InjectRepository as injectRepository } from '@nestjs/typeorm';
+import { <%= name.toUpperCase() %> } from './entities/<%= name %>.entity';
+import { Repository } from 'typeorm';
+import { Response } from '../utils/response';
+
+@Injectable()
+/** 匿名类 */
+export class <%= name.toUpperCase() %>Service {
+  /** 构造函数 */
+  constructor(
+    @injectRepository(<%= name.toUpperCase() %>)
+    private <%= name %>Repository: Repository<<%= name.toUpperCase() %>>,
+  ) {}
+
+  /** 创建 */
+  async create(content: string) {
+    await this.<%= name %>Repository.save({
+      content: content,
+    });
+    return Response.sucess();
+  }
+}
